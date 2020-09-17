@@ -1,5 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h3>Hello world!!</h3>
+
+
+
+<br/>
+{% if api %}
+    {% if api == "Error!!!" %}
+    <div class="alert alert-dark" role="alert">
+      There was an Error!
+    </div>
+      <div class="jumbotron">
+
+        The Postal Code Does Not Exist :)
+      </div>
+
+    {% else %}
+          <div class="jumbotron {{category_color}}" style="color: {{fontcolor}};">
+              <h1 id="CatName" class="display-4">{{ api.0.Category.Name}}</span></h1><br/>
+              <p id="Area" class="lead">{{ api.0.ReportingArea}} , Air Quality : {{ api.0.AQI}} </p>
+
+          </div>
+    {% endif %}
+{% endif %}
+
 {% endblock %}
